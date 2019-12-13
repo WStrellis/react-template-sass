@@ -1,9 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
-import foo from "./foo";
-
-console.log(foo());
 
 ReactDOM.render(
   <App title={"hot module replacement is cool"} />,
