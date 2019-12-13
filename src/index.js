@@ -1,5 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import App from "./App";
 
-ReactDOM.render(<div>Hot Module Reload</div>, document.getElementById("root"));
+ReactDOM.render(
+  <App title={"hot module replacement is cool"} />,
+  document.getElementById("root")
+);
 module.hot.accept();
