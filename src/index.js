@@ -1,12 +1,4 @@
-console.log("hello");
+import React from "react";
+import ReactDOM from "react-dom";
 
-function my_button() {
-  const btn = document.createElement("button");
-  btn.textContent = "Click Me";
-  btn.addEventListener("click", e => {
-    window.alert("hello");
-  });
-  return btn;
-}
-
-document.body.appendChild(my_button());
+ReactDOM.render(<div>Hello</div>, document.getElementById("root"));
