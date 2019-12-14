@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack-dev-server --config build-utils/webpack.config.js --env.env=dev --open",
-    "build": "webpack --config build-utils/webpack.config.js --env.env=prod ",
+    "dev": "cross-env NODE_ENV=development webpack-dev-server  --config build-utils/webpack.config.js --env.env=dev --open",
+    "build": "cross-env NODE_ENV=production webpack --config build-utils/webpack.config.js --env.env=prod ",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -17,15 +17,22 @@
     "@babel/preset-react": "^7.7.4",
     "babel-loader": "^8.0.6",
     "clean-webpack-plugin": "^3.0.0",
+    "cross-env": "^6.0.3",
+    "css-loader": "^3.3.2",
     "html-webpack-plugin": "^3.2.0",
-    "react-hot-loader": "^4.12.18",
+    "mini-css-extract-plugin": "^0.8.0",
+    "node-sass": "^4.13.0",
+    "optimize-css-assets-webpack-plugin": "^5.0.3",
+    "sass-loader": "^8.0.0",
+    "style-loader": "^1.0.1",
+    "terser-webpack-plugin": "^2.3.0",
     "webpack": "^4.41.2",
     "webpack-cli": "^3.3.10",
     "webpack-dev-server": "^3.9.0",
     "webpack-merge": "^4.2.2"
   },
   "dependencies": {
-    "react": "^16.12.0",
-    "react-dom": "^16.12.0"
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0"
   }
 }
