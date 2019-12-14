@@ -1,6 +1,7 @@
 /* Shared config for all environments */
 const path = require("path");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = isDevelopment => ({
   entry: {
@@ -97,11 +98,45 @@ module.exports = isDevelopment => ({
           },
         ],
       },
+      {
+        // Process images
+        test: /\.(png|jpe?g|gif|svg)$/,
+        use: [
+          {
+            loader: "file-loader",
+            options: {
+              outputPath: "images",
+            },
+          },
+        ],
+      },
     ],
   },
   resolve: {
-    extensions: ["*", ".js", ".jsx", ".scss", ".sass", ".css"],
+    extensions: [
+      "*",
+      ".js",
+      ".jsx",
+      ".scss",
+      ".sass",
+      ".css",
+      ".png",
+      ".jpg",
+      ".jpeg",
+      ".gif",
+      ".svg",
+    ],
   },
+  plugins: [
+    new HtmlWebpackPlugin({
+      title: "My Project",
+      template: "./src/index.html",
+    }),
+    new MiniCssExtractPlugin({
+      filename: "[name].[hash].css",
+      chunkFilename: "[id].[hash].css",
+    }),
+  ],
   output: {
     filename: "[name].bundle.js",
     path: path.resolve(__dirname, "../", "dist"),
