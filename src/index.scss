@@ -5,6 +5,7 @@ $test1: #de5300;
 }
 
 body {
+  min-height: 100vh;
   @include autoprefixTest;
   background: linear-gradient(to bottom, $test1, black);
 }
