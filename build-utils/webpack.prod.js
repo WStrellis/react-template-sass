@@ -1,13 +1,12 @@
 /* 
 Webpack settings for production env
  */
-const HtmlWebpackPlugin = require("html-webpack-plugin")
-const { CleanWebpackPlugin } = require("clean-webpack-plugin")
-const TerserPlugin = require("terser-webpack-plugin")
-const OptimizeCssAssetsPlugin = require("optimize-css-assets-webpack-plugin")
-const MiniCssExtractPlugin = require("mini-css-extract-plugin")
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const TerserPlugin = require("terser-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
-module.exports = isDevelopment => ({
+module.exports = () => ({
   mode: "production",
   optimization: {
     minimize: true,
@@ -15,7 +14,6 @@ module.exports = isDevelopment => ({
       new TerserPlugin({
         test: /\.(js|jsx)$/,
       }),
-      new OptimizeCssAssetsPlugin({}),
     ],
   },
   devtool: "source-map",
@@ -30,4 +28,4 @@ module.exports = isDevelopment => ({
       chunkFilename: "[id].[hash].css",
     }),
   ],
-})
+});
