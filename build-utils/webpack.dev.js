@@ -1,6 +1,6 @@
 /* Webpack settings for development */
-const webpack = require("webpack");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
+const webpack = require("webpack")
+const HtmlWebpackPlugin = require("html-webpack-plugin")
 
 module.exports = () => ({
   mode: "development",
@@ -8,13 +8,13 @@ module.exports = () => ({
   devServer: {
     contentBase: "./dist",
     port: 3000,
-    hot: true
+    hot: true,
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new HtmlWebpackPlugin({
       title: "My Project",
-      template: "./src/index.html"
-    })
-  ]
-});
+      template: "./src/index.html",
+    }),
+  ],
+})

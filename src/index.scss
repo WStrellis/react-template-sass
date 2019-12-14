@@ -1,3 +1,10 @@
+$test1: #de5300;
+
+@mixin autoprefixTest {
+  user-select: none;
+}
+
 body {
-  background-color: orange;
+  @include autoprefixTest;
+  background: linear-gradient(to bottom, $test1, black);
 }
