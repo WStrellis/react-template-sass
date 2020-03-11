@@ -1,9 +1,7 @@
-const fs = require("fs")
-module.exports = (env, path, dotenv) => {
+module.exports = dotenv => {
     // get variables from .env if exists
-    let fileEnv = dotenv.config().parsed
-    // format environment variables to nice object
-    const envVars = fileEnv ? {...env, ...fileEnv} : env
+    let fileEnv = dotenv.config().parsed || {}
+
     //get env variables injected from deployment platforms such as Zeit, Netlify, AWS
     let injectedVars = Object.keys(process.env)
         .filter(key => /^REACT_APP_/i.test(key))
@@ -12,7 +10,7 @@ module.exports = (env, path, dotenv) => {
             return env
         }, {})
 
-    const combined = {...envVars, ...injectedVars}
+    const combined = {...fileEnv, ...injectedVars}
     return Object.keys(combined).reduce((prev, next) => {
         prev[`process.env.${next}`] = JSON.stringify(combined[next])
         return prev
