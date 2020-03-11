@@ -2,6 +2,7 @@
 
 module.exports = webpack => {
     return {
+        mode: "development",
         resolve: {
             alias: {
                 "react-dom": "@hot-loader/react-dom",

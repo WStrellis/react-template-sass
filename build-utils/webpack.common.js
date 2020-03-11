@@ -9,8 +9,10 @@ module.exports = (isDevelopment, path, webpack, envKeys) => ({
     },
     output: {
         filename: "[name].[hash].js",
+        // enable nested routes in development
         publicPath: "/",
         path: path.resolve(__dirname, "../", "public"),
+        // used for codesplitting
         chunkFilename: "[name].[hash].js",
     },
     module: {
@@ -18,8 +20,7 @@ module.exports = (isDevelopment, path, webpack, envKeys) => ({
             {
                 test: /\.(js|jsx)$/,
                 exclude: /node_modules/,
-                // run eslint before compiling
-                use: ["babel-loader", "eslint-loader"],
+                use: ["babel-loader"],
             },
             {
                 // look for css/sass modules
@@ -113,7 +114,7 @@ module.exports = (isDevelopment, path, webpack, envKeys) => ({
             },
             {
                 // Process images
-                test: /\.(png|jpe?g|gif|svg)$/,
+                test: /\.(png|jpe?g|gif|svg|webp)$/,
                 use: [
                     {
                         loader: "file-loader",
@@ -155,6 +156,7 @@ module.exports = (isDevelopment, path, webpack, envKeys) => ({
             ".jpeg",
             ".gif",
             ".svg",
+            ".webp",
         ],
     },
     plugins: [

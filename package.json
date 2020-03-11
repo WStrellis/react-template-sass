@@ -4,12 +4,12 @@
     "description": "Boilerlate React template with Webpack. Supports SASS/ CSS modules.",
     "main": "index.js",
     "scripts": {
-        "dev": "cross-env NODE_ENV=development webpack-dev-server --mode=development  --env.environment=development  --config build-utils/webpack.config.js  --open",
-        "build": "cross-env NODE_ENV=production webpack --mode=production --env.environment=production  --config build-utils/webpack.config.js  ",
+        "dev": "cross-env NODE_ENV=development webpack-dev-server   --env.env=dev --config build-utils/webpack.config.js  --open",
+        "build": "cross-env NODE_ENV=production webpack  --env.env=prod --config build-utils/webpack.config.js  ",
         "format": "prettier --write \"src/**/*.{js,jsx}\" \"build-utils/**/*.{js,jsx}\" ",
         "lint": "eslint \"src/**/*.{js,jsx}\" \"build-utils/**/*.{js,jsx}\" --quiet",
-        "test": "jest --passWithNoTests",
-        "test:watch": "jest --watch --passWithNoTests"
+        "test": "jest ",
+        "test:watch": "jest --watch "
     },
     "keywords": [],
     "author": "",
@@ -35,7 +35,6 @@
         "cssnano": "^4.1.10",
         "dotenv": "^8.2.0",
         "eslint": "^6.7.2",
-        "eslint-loader": "^3.0.3",
         "eslint-plugin-react": "^7.18.3",
         "file-loader": "^5.0.2",
         "html-webpack-plugin": "^3.2.0",
