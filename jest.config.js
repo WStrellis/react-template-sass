@@ -22,31 +22,32 @@ module.exports = {
 
     // An array of glob patterns indicating a set of files for which coverage information should be collected
     // collectCoverageFrom: [
-    //   '**/*.{js,jsx}',
-    //   '!**/__tests__/**',
-    //   '!**/node_modules/**',
+    //     "src/**/*.{js,jsx}",
+    //     "!**/__tests__/**",
+    //     "!**/node_modules/",
     // ],
 
-    // The directory where Jest should output its coverage files
-    // coverageDirectory: './coverage',
+    // The directory where Jest should output its coverage files. Must add a reporter other than "text" to the
+    // coverageReporters setting to generate coverage report files.
+    coverageDirectory: "coverage/",
 
     // An array of regexp pattern strings used to skip coverage collection
-    // coveragePathIgnorePatterns: ['/node_modules/'],
+    coveragePathIgnorePatterns: ["/node_modules/"],
 
     // A list of reporter names that Jest uses when writing coverage reports
-    // coverageReporters: [
-    //   "json",
-    // 'text',
-    // ],
+    // "text" prints coverage results to the console.
+    // add "html" to the array to produce an html page with coverage data. Nice to look at.
+    // add "json" to the array to produce a json file with coverage data.
+    coverageReporters: ["text"],
 
     // An object that configures minimum threshold enforcement for coverage results
-    // coverageThreshold: {
-    //   '**/*.{js,jsx}': {
-    //     branches: 10,
-    //     functions: 10,
-    //     statements: 10,
-    //   },
-    // },
+    coverageThreshold: {
+        global: {
+            branches: 80,
+            functions: 80,
+            statements: 80,
+        },
+    },
 
     // A path to a custom dependency extractor
     // dependencyExtractor: null,
@@ -70,20 +71,15 @@ module.exports = {
     // maxWorkers: "50%",
 
     // An array of directory names to be searched recursively up from the requiring module's location
-    moduleDirectories: [
-        "node_modules",
-        "src/styles",
-        "test-utils",
-        "src/components",
-    ],
+    moduleDirectories: ["node_modules"],
 
     // An array of file extensions your modules use
-    moduleFileExtensions: ["js", "jsx", "json", "node"],
+    moduleFileExtensions: ["js", "jsx"],
 
     // A map from regular expressions to module names that allow to stub out resources with a single module
     moduleNameMapper: {
         "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$":
-            "<rootDir>/test-utils/__mocks__/fileMock.js",
+            "<rootDir>/src/__tests__/__mocks__/fileMock.js",
         "\\.(css|scss|sass)$": "identity-obj-proxy",
         "\\.module\\.(css|scss|sass)$": "identity-obj-proxy",
     },
@@ -119,19 +115,19 @@ module.exports = {
     // restoreMocks: false,
 
     // The root directory that Jest should scan for tests and modules within
-    // rootDir: null,
+    rootDir: "src",
 
     // A list of paths to directories that Jest should use to search for files in
-    roots: ["<rootDir>"],
+    // roots: ["<rootDir>"],
 
     // Allows you to use a custom runner instead of Jest's default test runner
     // runner: "jest-runner",
 
     // The paths to modules that run some code to configure or set up the testing environment before each test
-    setupFiles: ["<rootDir>/test-utils/setup-tests.js"],
+    setupFiles: ["<rootDir>/setupTestEnv.js"],
 
     // A list of paths to modules that run some code to configure or set up the testing framework before each test
-    // setupFilesAfterEnv: [],
+    setupFilesAfterEnv: ["<rootDir>/setupTestFramework"],
 
     // A list of paths to snapshot serializer modules Jest should use for snapshot testing
     // snapshotSerializers: [],
@@ -146,7 +142,12 @@ module.exports = {
     // testLocationInResults: false,
 
     // The glob patterns Jest uses to detect test files
-    testMatch: ["**/__tests__/**/*test.[j]s?(x)", "**/*test.[j]s?(x)"],
+    testMatch: [
+        "**/__tests__/**/*.test.[j]s?(x)",
+        "**/__tests__/**/*.spec.[j]s?(x)",
+        "**/*.test.[j]s?(x)",
+        "**/*.spec.[j]s?(x)",
+    ],
 
     // An array of regexp pattern strings that are matched against all test paths, matched tests are skipped
     // testPathIgnorePatterns: [
