@@ -9,10 +9,11 @@
         "format": "prettier --write \"src/**/*.{js,jsx}\" \"build-utils/**/*.{js,jsx}\" ",
         "lint": "eslint \"src/**/*.{js,jsx}\" \"build-utils/**/*.{js,jsx}\" --quiet",
         "test": "jest ",
-        "test:watch": "jest --watch "
+        "test:watch": "jest --watch ",
+        "test:coverage": "jest --coverage "
     },
     "keywords": [],
-    "author": "",
+    "author": "Westley Strellis",
     "license": "ISC",
     "devDependencies": {
         "@babel/core": "^7.9.0",
@@ -30,6 +31,7 @@
         "autoprefixer": "^9.7.5",
         "babel-eslint": "^10.1.0",
         "babel-loader": "^8.1.0",
+        "babel-plugin-dynamic-import-node": "^2.3.0",
         "clean-webpack-plugin": "^3.0.0",
         "cross-env": "^7.0.2",
         "css-loader": "^3.3.2",

@@ -1,10 +1,13 @@
-module.exports = api => {
+module.exports = (api) => {
     const env = api.cache(() => process.env.NODE_ENV)
     console.log(".babelrc.js env: ", env)
 
     return {
         presets: [
-            ["@babel/preset-env", {modules: false, targets: {node: "current"}}],
+            [
+                "@babel/preset-env",
+                { modules: false, targets: { node: "current" } },
+            ],
             "@babel/preset-react",
         ],
         plugins: [
@@ -15,7 +18,10 @@ module.exports = api => {
         ],
         env: {
             test: {
-                plugins: ["@babel/plugin-transform-modules-commonjs"],
+                plugins: [
+                    "@babel/plugin-transform-modules-commonjs", // convert ES2015 'import' to CommonJS 'require'
+                    "dynamic-import-node", // makes components with dynamic imports work in tests
+                ],
             },
         },
     }
